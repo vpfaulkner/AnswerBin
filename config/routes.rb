@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
+  root 'homepages#index'
+  resource :questions do
+    get 'index'
+    get '/:id' => 'questions#show', as: 'show'
+    resource :answers do
+      post '/:id/vote' => 'answers#vote', as: 'vote'
+    end
+  end
+  resource :homepages
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
