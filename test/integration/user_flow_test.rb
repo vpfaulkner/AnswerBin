@@ -3,6 +3,11 @@ require 'test_helper'
 class UserFlowTest < ActionDispatch::IntegrationTest
   context "Homepage Index" do
 
+    should "see question of the day" do
+      visit root_path
+      assert page.has_content?("Question of the Day"), "  Should see the question of the day"
+    end
+
     context "when not logged in" do
       should "see login in the navbar" do
         visit root_path
