@@ -6,8 +6,8 @@
 #
 one:
   email: tester1@stack.com
-  encrypted_password: password
+  encrypted_password: <%= password_digest %>
 
 two:
   email: tester2@stack.com
-  encrypted_password: password
+  encrypted_password: <%= password_digest %>

@@ -3,8 +3,12 @@ require File.expand_path('../../config/environment', __FILE__)
 require 'rails/test_help'
 require 'faker'
 require 'capybara/rails'
+require_relative 'support/test_password_helper'
+
+Capybara.server_port = 31337
 
 class ActiveSupport::TestCase
+  include TestPasswordHelper
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
@@ -15,4 +19,7 @@ end
 class ActionDispatch::IntegrationTest
   # Make the Capybara DSL available in all integration tests
   include Capybara::DSL
+
 end
+
+ActiveRecord::FixtureSet.context_class.send :include, TestPasswordHelper

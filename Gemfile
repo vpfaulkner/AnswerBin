@@ -47,6 +47,7 @@ group :development, :test do
   gem "pry-rails"
   gem "shoulda"
   gem 'capybara'
+  gem "selenium-webdriver"
 end
 
 gem 'foundation-rails'
