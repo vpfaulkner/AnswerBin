@@ -1,6 +1,5 @@
 <br>
-<h1>The Question of the Day</h1>
-<h3><%= @question.title%></h3>
+<h1>Question of the Day: <%= @question.title%></h1>
 <p><%= @question.text%></p>
 <br>
 <%= simple_form_for @answer, url: questions_answers_path do |f| %>
