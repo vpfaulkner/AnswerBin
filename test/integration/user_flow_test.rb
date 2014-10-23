@@ -39,11 +39,22 @@ class UserFlowTest < ActionDispatch::IntegrationTest
         assert page.has_content?("Here is my answer"), "Answer should be displayed"
       end
 
+      should "be able to vote for an answer" do
+          # find('fa fa-thumbs-up').click
+          ## FILL IN
+
+      end
+
     end
 
     context "when not logged in" do
       should "not be able to submit an answer to question of the day" do
+        visit root_path
+        assert_equal root_path, current_path
+        fill_in "Text", with: "Here is my answer"
+        click_button "Create Answer"
 
+        refute page.has_content?("Here is my answer"), "Answer should not be displayed"
       end
     end
 
