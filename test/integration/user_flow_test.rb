@@ -11,7 +11,7 @@ class UserFlowTest < ActionDispatch::IntegrationTest
     context "when not logged in" do
       should "see login in the navbar" do
         visit root_path
-        assert page.has_content?("Login"), "No login when not logged in"
+        assert page.has_content?("Login"), "Should have loging link"
       end
     end
 
@@ -27,13 +27,23 @@ class UserFlowTest < ActionDispatch::IntegrationTest
         click_link('Logout')
       end
 
-      should "be able to submit an answer to question of the day" do
-
+      should "see logout in the navbar" do
+        assert_equal root_path, current_path
+        assert page.has_content?("Logout"), "Should see logout link"
       end
 
-      should "see name in the navbar" do
-        assert_equal root_path, current_path
-        assert page.has_content?("Logout"), "Not logged in properly"
+      should "be able to submit an answer to question of the day" do
+        fill_in "Text", with: "Here is my answer"
+        click_button "Create Answer"
+
+        assert page.has_content?("Here is my answer"), "Answer should be displayed"
+      end
+
+    end
+
+    context "when not logged in" do
+      should "not be able to submit an answer to question of the day" do
+
       end
     end
 

@@ -53,3 +53,5 @@ end
 gem 'foundation-rails'
 gem "font-awesome-rails"
 gem 'devise'
+gem 'simple_form'
+gem 'simplecov', :require => false, :group => :test

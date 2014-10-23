@@ -7,5 +7,8 @@ class Answer < ActiveRecord::Base
   validates :user, presence: true
   validates :question, presence: true
 
+  def score
+    votes.sum(:value)
+  end
 
 end

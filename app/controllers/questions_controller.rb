@@ -7,9 +7,9 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(question_params)
     if @question.save
-      redirect_to root_path, status: 200
+      redirect_to root_path
     else
-      redirect_to root_path, status: 400
+      redirect_to root_path
     end
   end
 
